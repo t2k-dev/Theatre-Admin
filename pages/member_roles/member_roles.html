@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theatre Admin | Teams</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../dist/css/custom.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../index.html" class="nav-link">Home</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <script language="JavaScript" src="../../dist/js/menu.js">
+  </script>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Роли</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="card card-info">
+            <div class="card-header">
+              <h3 class="card-title">Новая роль</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Название RU</label>
+                      <input id="name-ru" type="text" class="form-control" placeholder="Введите...">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Название KG</label>
+                      <input id="name-kg" type="text" class="form-control" placeholder="Введите ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Название EN</label>
+                      <input id="name-en" type="text" class="form-control" placeholder="Введите ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <button id="btn-add" style="margin-top:32px" type="button" class="btn btn-info">Добавить</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+      </div>
+      
+      <!--Table-->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Роли</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects" id="table-all">
+              <thead>
+                  <tr>
+                      <th style="width: 1%">
+                          Id
+                      </th>
+                      <th>
+                        Название RU
+                      </th>
+                      <th>
+                        Название KG
+                      </th>
+                      <th>
+                        Название EN
+                      </th>
+                      <th style="width:10%">                        
+                      </th>
+                      <th style="width:10%">                        
+                      </th>
+                  </tr>
+              </thead>
+              
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+
+<!--Modals-->
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Редактировать роль</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Название RU</label>
+          <input type="text" class="form-control" id="editNameRU" placeholder="Введите...">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Название KG</label>
+          <input type="text" class="form-control" id="editNameKG" placeholder="Введите...">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Название EN</label>
+          <input type="text" class="form-control" id="editNameEN" placeholder="Введите...">
+        </div>
+        
+        <div class="form-group">
+          <div class="input-group">
+      </div>
+      <div class="modal-footer justify-content-between">
+        <input type="hidden" id="editId">
+        <button type="button" class="btn btn-info">Сохранить</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!--Custom-->
+<script src="../../dist/js/webHelpers.js"></script>
+<script src="../../dist/js/member_roles/index.js"></script>
+</body>
+</html>
