@@ -1,7 +1,7 @@
 $(document).ready(function () {  
     if (getUrlParameter('id')){
         fillInputs();
-        $('#caption').text("Редактировать событие");
+        $('#caption').text("Изменить событие");
     }
     else{
         $('#caption').text("Новое событие");
@@ -80,27 +80,27 @@ function generateObject()
         }
     }
     
-    return  [
-        contentRU,
-        contentKG,
-        contentEN
-    ]    
+    return  {
+        "Content":[
+            contentRU,
+            contentKG,
+            contentEN
+        ]
+    }    
 }
 
 function saveItem(){
     var method = "POST";
-    var appendReq = "";
     var data = generateObject()
 
     var id = getUrlParameter('id');    
     if (id){
         method = "PUT"
-        appendReq = "/"+ id;
         data.Id = parseInt(id);
     }
 
     $.ajax({
-        url: BASE_URL + "plays-service/actions/action" + appendReq,
+        url: BASE_URL + "plays-service/actions/action",
         method: method,
         dataType: 'json',
         headers:{
@@ -110,7 +110,7 @@ function saveItem(){
         success: function (response) {
             if (response.success === true)
             {
-                alert('Команда сохранена')
+                alert('Сохранено')
             }
         }
     })

@@ -12,3 +12,9 @@
     margin-top: 3px;
     display:inline-block;
   }
+
+  .short-numeric{
+    width: 100px;
+  }
+
+  .form-check label{user-select: none;}

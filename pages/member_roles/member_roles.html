@@ -55,59 +55,15 @@
           <div class="col-sm-6">
             <h1>Роли</h1>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
+          <div class="col-sm-6 text-right">
+            <button class="btn btn-block btn-success btn-sm btn-add-new" data-toggle="modal" data-target="#modal-new"><i class="fas fa-plus"></i> Добавить</button>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-md-8">
-
-          <div class="card card-info">
-            <div class="card-header">
-              <h3 class="card-title">Новая роль</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <form>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label>Название RU</label>
-                      <input id="name-ru" type="text" class="form-control" placeholder="Введите...">
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Название KG</label>
-                      <input id="name-kg" type="text" class="form-control" placeholder="Введите ...">
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Название EN</label>
-                      <input id="name-en" type="text" class="form-control" placeholder="Введите ...">
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <button id="btn-add" style="margin-top:32px" type="button" class="btn btn-info">Добавить</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- /.card-body -->
-          </div>
-        </div>
-      </div>
-      
+    <section class="content">     
       <!--Table-->
       <div class="card">
         <div class="card-header">
@@ -169,6 +125,42 @@
 
 
 <!--Modals-->
+<div class="modal fade" id="modal-new">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Добавить роль участника</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="edit-name-ru">Название RU</label>
+          <input type="text" class="form-control" id="name-ru" placeholder="Введите..." autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="edit-name-kg">Название KG</label>
+          <input type="text" class="form-control" id="name-kg" placeholder="Введите..." autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="edit-name-en">Название EN</label>
+          <input type="text" class="form-control" id="name-en" placeholder="Введите..." autocomplete="off">
+        </div>
+      </div>
+      <div class="modal-footer text-right">
+        <button type="button" onclick="newItem()" class="btn btn-success" data-dismiss="modal">Добавить</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<!--Modals-->
+
+
+
 <div class="modal fade" id="modal-default">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -193,16 +185,15 @@
         </div>
         
         <div class="form-group">
-          <div class="input-group">
+          <div class="modal-footer justify-content-between">
+            <input type="hidden" id="editId">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Сохранить</button>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer justify-content-between">
-        <input type="hidden" id="editId">
-        <button type="button" class="btn btn-info">Сохранить</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
   <!-- /.modal-dialog -->
+</div>
+</div>
 </div>
 
 <!-- jQuery -->
@@ -214,7 +205,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!--Custom-->
+<script src="../../dist/js/settings.js"></script>
 <script src="../../dist/js/webHelpers.js"></script>
-<script src="../../dist/js/member_roles/index.js"></script>
+<script src="../../dist/js/member_roles/member_roles.js"></script>
 </body>
 </html>

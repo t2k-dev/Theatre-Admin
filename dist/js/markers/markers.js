@@ -5,7 +5,7 @@ $(document).ready(function () {
 function deleteItem(id)
 {
     $.ajax({
-        url: BASE_URL + "plays-service/members/member/"+id,
+        url: BASE_URL + "plays-service/markers/marker/"+id,
         method: "DELETE",        
         dataType: 'json',
         headers:{
@@ -14,7 +14,7 @@ function deleteItem(id)
         success: function (response) {
             if (response.success === true)
             {
-                alert('Участник удален');
+                alert('Удалено');
                 loadTable();
             }
         }
@@ -25,7 +25,7 @@ function deleteItem(id)
 function loadTable()
 {
     $.ajax({
-        url: BASE_URL + "plays-service/members",
+        url: BASE_URL + "plays-service/markers?lang=all",
         method: "GET",
         dataType: 'json',
         success: function (response) {            
@@ -35,21 +35,18 @@ function loadTable()
 
                 $.each(response.data, function (i, item) {
                     var $tr = $('<tr>').append(
-                        /*Name*/
-                        $('<td>').text(item.MemberInfos[0].FirstName),
-                        $('<td>').text(item.MemberInfos[0].LastName),
-                        $('<td>').text(item.MemberInfos[0].MiddleName),
-                        $('<td>').text(item.RoleId),
+                        $('<td>').text(item.action[0].name),
+                        $('<td>').text(item.create_date),
                         $('<td>').append(
-                            $('<a class="btn btn-info btn-sm" href="./member_form.html?id='+item.Id+'">')
-                                .text('Изменить')
-                                .append($('<i class="fas fa-pencil-alt margin-left-5">'))
+                            $('<a class="btn btn-info btn-sm" href="./marker_form.html?id='+item.id+'">')
+                                .append($('<i class="fas fa-pencil-alt margin-right-5">'))
+                                .append('Изменить')
                         ),
                         $('<td class="project-actions">').append(
                             $('<button class="btn btn-danger btn-sm">')
-                                .text('Удалить')
-                                .append($('<i class="fas fa-trash margin-left-5">'))
-                                .on('click', function(){deleteItem(item.Id)})),
+                                .append($('<i class="fas fa-trash margin-right-5">'))
+                                .append('Удалить')
+                                .on('click', function(){deleteItem(item.id)})),
                     );
 
                     $tr.appendTo('#table-all tbody');

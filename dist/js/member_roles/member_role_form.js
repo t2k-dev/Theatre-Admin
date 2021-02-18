@@ -10,15 +10,15 @@ $(document).ready(function () {
 function fillInputs() {
     var id = getUrlParameter('id');
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/roles/role/"+id,
+        url: BASE_URL + "plays-service/roles/role/"+id,
         method: "GET",
         dataType: 'json',
         success: function (response) {            
             if (response.success === true) {
-                $('#edit-name-ru').val(response.data.NameRU);
-                $('#edit-name-kg').val(response.data.NameKG);
-                $('#edit-name-en').val(response.data.NameEN);
-                $('#edit-id').val(response.data.Id);                
+                $('#edit-name-ru').val(response.data.name_ru);
+                $('#edit-name-kg').val(response.data.name_kg);
+                $('#edit-name-en').val(response.data.name_en);
+                $('#edit-id').val(response.data.id);
             }
         }
     })
@@ -27,13 +27,13 @@ function fillInputs() {
 function saveChanges() {
     alert($('#edit-name-ru').val());
     var data = {
-        "Id" : parseInt($('#edit-id').val()),
-        "NameRU": $('#edit-name-ru').val(),
-        "NameKG": $('#edit-name-kg').val(),
-        "NameEN": $('#edit-name-en').val()
+        "id" : parseInt($('#edit-id').val()),
+        "name_ru": $('#edit-name-ru').val(),
+        "name_kg": $('#edit-name-kg').val(),
+        "name_en": $('#edit-name-en').val()
     }
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/roles/role",
+        url: BASE_URL + "plays-service/roles/role",
         method: "PUT",
         dataType: 'json',
         headers:{

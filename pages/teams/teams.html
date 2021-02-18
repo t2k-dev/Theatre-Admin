@@ -65,28 +65,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card card-info">
-            <div class="card-header">
-              <h3 class="card-title">Новая команда</h3>
-            </div>
-            <div class="card-body">
-              <div class="input-group input-group-sm">
-                    <div class="form-group">
-                      <label>Название</label>
-                      <input id="new-team-name" type="text" class="form-control" placeholder="Введите...">
-                    </div>
-                    <div class="form-group">
-                      <button id="btn-add" type="button" class="btn btn-info btn-flat" style="margin-top:32px;margin-left:10px;">Добавить</button>
-                    </div>
-              </div>
-              <!-- /input-group -->
-            </div>
-            <!-- /.card-body -->
-          </div>
-        </div>
-      </div>
       
       <!--Table-->
       <div class="card">
@@ -141,6 +119,8 @@
 <!-- ./wrapper -->
 
 <!--Modals-->
+
+<!--New-->
 <div class="modal fade" id="modal-new">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -157,33 +137,7 @@
         </div>
       </div>
       <div class="modal-footer text-right">
-        <button type="button" onclick="newItem()" class="btn btn-success">Добавить</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-<div class="modal fade" id="modal-overlay">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="overlay">
-          <i class="fas fa-2x fa-sync fa-spin"></i>
-      </div>
-      <div class="modal-header">
-        <h4 class="modal-title">Default Modal</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" onclick="newItem()" class="btn btn-success" data-dismiss="modal">Добавить</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -191,46 +145,25 @@
   <!-- /.modal-dialog -->
 </div>
 
-
-<!--New-->
-<div class="modal fade" id="modal-ssszzz">
+<!--Edit-->
+<div class="modal fade" id="modal-edit">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Добавить команду</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="modal-footer justify-content-between">
-        <button id="btn-add2" type="submit" class="btn btn-info" data-dismiss="modal">Сохранить</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-
-
-<div class="modal fade" id="modal-defaultzzz">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Редактировать команду</h4>
+        <h4 class="modal-title">Изменить команду</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="edit-Name">Название</label>
-          <input type="text" class="form-control" id="edit-Name">
+          <label for="edit-name">Название</label>
+          <input type="text" class="form-control" id="edit-name" autocomplete="off">
         </div>
-      <div class="modal-footer justify-content-between">
-        <input type="hidden" id="edit-Id">
-        <button id="btn-save" type="button" class="btn btn-info" data-dismiss="modal">Сохранить</button>
+      </div>
+      <div class="modal-footer text-right">
+        <input type="hidden" id="edit-id">
+        <button type="button" onclick="saveItem()" class="btn btn-success" data-dismiss="modal">Сохранить</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -246,7 +179,7 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-
+<script src="../../dist/js/settings.js"></script>
 <script src="../../dist/js/teams/teams.js"></script>
 </body>
 </html>

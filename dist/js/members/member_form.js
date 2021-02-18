@@ -9,7 +9,7 @@ $(document).ready(function () {
         loadTeamsList();
     }
 
-    //$('#btn-save').on("click", function(){saveItem()});
+    $('#btn-save').on("click", function(){saveItem()});
 })
 
 function loadMemberRolesList(resolve, reject){
@@ -23,7 +23,7 @@ function loadMemberRolesList(resolve, reject){
         success: function (response) {            
             if (response.success === true) {
                 $.each(response.data, function (i, item) {
-                    $("#member-role").append("<option value='"+item.Id+"'>"+item.NameRU+"</option>");
+                    $("#member-role").append("<option value='"+item.id+"'>"+item.name_ru+"</option>");
                 });
                 resolve(1);
             }
@@ -42,7 +42,7 @@ function loadTeamsList(resolve, reject){
         success: function (response) {            
             if (response.success === true) {
                 $.each(response.data, function (i, item) {
-                    $("#member-team").append("<option value='"+item.Id+"'>"+item.Name+"</option>");
+                    $("#member-team").append("<option value='"+item.id+"'>"+item.name+"</option>");
                 });
                 resolve(1);
             }
@@ -53,34 +53,34 @@ function loadTeamsList(resolve, reject){
 function fillInputs() {
     var id = getUrlParameter('id');
     $.ajax({
-        url: BASE_URL + "plays-service/members/member/"+id,
+        url: BASE_URL + "plays-service/members/member/"+id+"?lang=all",
         method: "GET",
         dataType: 'json',
         success: function (response) {            
             if (response.success === true) {
-                response.data.MemberInfos.forEach(function(item){
-                    if (item.Lang === 'RU'){
-                        $('#first-name-ru').val(item.FirstName);
-                        $('#last-name-ru').val(item.LastName);
-                        $('#middle-name-ru').val(item.MiddleName);
-                        $('#desc-ru').val(item.Desc);
+                response.data.member_info.forEach(function(item){
+                    if (item.lang === 'RU'){
+                        $('#first-name-ru').val(item.first_name);
+                        $('#last-name-ru').val(item.last_name);
+                        $('#middle-name-ru').val(item.middle_name);
+                        $('#desc-ru').val(item.desc);
                     }
-                    if (item.Lang === 'KG'){
-                        $('#first-name-kg').val(item.FirstName);
-                        $('#last-name-kg').val(item.LastName);
-                        $('#middle-name-kg').val(item.MiddleName);
-                        $('#desc-kg').val(item.Desc);
+                    if (item.lang === 'KG'){
+                        $('#first-name-kg').val(item.first_name);
+                        $('#last-name-kg').val(item.last_name);
+                        $('#middle-name-kg').val(item.middle_name);
+                        $('#desc-kg').val(item.desc);
                     }
-                    if (item.Lang === 'EN'){
-                        $('#first-name-en').val(item.FirstName);
-                        $('#last-name-en').val(item.LastName);
-                        $('#middle-name-en').val(item.MiddleName);
-                        $('#desc-en').val(item.Desc);
+                    if (item.lang === 'EN'){
+                        $('#first-name-en').val(item.first_name);
+                        $('#last-name-en').val(item.last_name);
+                        $('#middle-name-en').val(item.middle_name);
+                        $('#desc-en').val(item.desc);
                     }
                   })
-                $('#member-role').val(response.data.RoleId); //
-                $('#member-team').val(response.data.TeamId); //
-                $('#member-avatarUrl').val(response.data.AvatarUrl);
+                $('#member-role').val(response.data.role_id); //
+                $('#member-team').val(response.data.team_id); //
+                $('#member-avatarUrl').val(response.data.avatar_url);
             }
         }
     })
@@ -94,38 +94,38 @@ function generateObject()
     
     if ($('#first-name-ru').val()){
         memberInfoRU = {
-            "Lang": "RU",
-            "FirstName": $('#first-name-ru').val(),
-            "LastName": $('#last-name-ru').val(),
-            "MiddleName": $('#middle-name-ru').val(),
-            "Desc": $('#desc-ru').val(),
+            "lang": "RU",
+            "first_name": $('#first-name-ru').val(),
+            "last_name": $('#last-name-ru').val(),
+            "middle_name": $('#middle-name-ru').val(),
+            "desc": $('#desc-ru').val(),
         }    
     }
 
     if ($('#first-name-kg').val()){
         memberInfoKG = {
-            "Lang": "KG",
-            "FirstName": $('#first-name-kg').val(),
-            "LastName": $('#last-name-kg').val(),
-            "MiddleName": $('#middle-name-kg').val(),
-            "Desc": $('#desc-kg').val(),
+            "lang": "KG",
+            "first_name": $('#first-name-kg').val(),
+            "last_name": $('#last-name-kg').val(),
+            "middle_name": $('#middle-name-kg').val(),
+            "desc": $('#desc-kg').val(),
         }
     }
 
     if ($('#first-name-en').val()){
         memberInfoEN = {
-            "Lang": "EN",
-            "FirstName": $('#first-name-en').val(),
-            "LastName": $('#last-name-en').val(),
-            "MiddleName": $('#middle-name-en').val(),
-            "Desc": $('#desc-en').val(),
+            "lang": "EN",
+            "first_name": $('#first-name-en').val(),
+            "last_name": $('#last-name-en').val(),
+            "middle_name": $('#middle-name-en').val(),
+            "desc": $('#desc-en').val(),
         }
     }
     return {
-        "RoleId": parseInt($('#member-role').val()),
-        "TeamId": parseInt($('#member-team').val()),
-        "AvatarUrl": $('#member-avatarUrl').val(),
-        "MemberInfos": [
+        "role_id": parseInt($('#member-role').val()),
+        "team_id": parseInt($('#member-team').val()),
+        "avatar_url": $('#member-avatarUrl').val(),
+        "member_info": [
             memberInfoRU,
             memberInfoKG,
             memberInfoEN
@@ -142,11 +142,11 @@ function saveItem(){
     if (id){
         method = "PUT"
         appendReq = "/"+ id;
-        data.Id = parseInt(id);
+        data.id = parseInt(id);
     }
 
     $.ajax({
-        url: BASE_URL + "plays-service/members/member" + appendReq,
+        url: BASE_URL + "plays-service/members/member",
         method: method,
         dataType: 'json',
         headers:{
@@ -156,7 +156,8 @@ function saveItem(){
         success: function (response) {
             if (response.success === true)
             {
-                alert('Команда сохранена')
+                alert('Сохранено');
+                window.location.href = "members.html";
             }
         }
     })

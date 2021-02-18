@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Widgets</title>
+  <title>TheatreAdmin | Спектакли</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../dist/css/custom.css">  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -24,7 +25,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="plays.html" class="nav-link">Спектакли</a>
       </li>
     </ul>
 
@@ -43,13 +44,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Форма события</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Widgets</li>
-            </ol>
+            <h1 id="caption">Спектакли</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -58,12 +53,13 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!--Member Infos-->
+        <!--Contents-->
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-12">
             <div class="card card-primary">
               <!-- /.card-header -->
                 <div class="card-body">
+                  <!--Langs-->
                   <div class="row">
                     <div class="col-md-4">
                       <h3 class="text-center text-bold">RU</h3>
@@ -77,52 +73,64 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4">
-                      <div class="card-info card-outline form-horizontal" style="padding-top:10px">
+                      <div class="card-info card-outline form-horizontal form-column">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Название</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name-ru" placeholder="">
+                            <input type="text" class="form-control" id="name-ru" placeholder="" autocomplete="off">
                           </div>                          
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ссылка на аудио</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="audio-ru" placeholder="">
+                            <input type="text" class="form-control" id="audio-ru" placeholder="" autocomplete="off">
                           </div>                          
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ссылка на видео</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="vidoe-ru" placeholder="">
+                            <input type="text" class="form-control" id="video-ru" placeholder="" autocomplete="off">
                           </div>                          
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Короткое описание</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" rows="3" id="short-desc-ru" placeholder="Введите ..."></textarea>
+                          </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Описание</label>
                           <div class="col-sm-9">
                             <textarea class="form-control" rows="3" id="desc-ru" placeholder="Введите ..."></textarea>
                           </div>
-                        </div>    
+                        </div>                        
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <div class="card-danger card-outline form-horizontal" style="padding-top:10px">
+                      <div class="card-danger card-outline form-horizontal form-column">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Название</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name-kg" placeholder="">
+                            <input type="text" class="form-control" id="name-kg" placeholder="" autocomplete="off">
                           </div>                          
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ссылка на аудио</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="audio-kg" placeholder="">
+                            <input type="text" class="form-control" id="audio-kg" placeholder="" autocomplete="off">
                           </div>                          
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ссылка на видео</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="vidoe-kg" placeholder="">
+                            <input type="text" class="form-control" id="video-kg" placeholder="" autocomplete="off">
                           </div>                          
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Короткое описание</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" rows="3" id="short-desc-kg" placeholder="Введите ..."></textarea>
+                          </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Описание</label>
@@ -133,24 +141,30 @@
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <div class="card-primary card-outline form-horizontal" style="padding-top:10px">
+                      <div class="card-primary card-outline form-horizontal form-column">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Название</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name-en" placeholder="">
+                            <input type="text" class="form-control" id="name-en" placeholder="" autocomplete="off">
                           </div>                          
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ссылка на аудио</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="audio-en" placeholder="">
+                            <input type="text" class="form-control" id="audio-en" placeholder="" autocomplete="off">
                           </div>                          
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ссылка на видео</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="vidoe-en" placeholder="">
+                            <input type="text" class="form-control" id="video-en" placeholder="" autocomplete="off">
                           </div>                          
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Короткое описание</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" rows="3" id="short-desc-en" placeholder="Введите ..."></textarea>
+                          </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Описание</label>
@@ -161,11 +175,46 @@
                       </div>
                     </div>
                   </div>
-                  <hr/>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Команда</label>
+                        <select id="team-id" class="form-control">
+                          <option value="" disabled selected>Выберите команду</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Ссылка на изображение</label>
+                        <input type="text" class="form-control" id="img-url" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Длительность</label>
+                        <input type="text" class="form-control" id="duration-min" placeholder="">              
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Возрастная категория</label>
+                        <input type="text" class="form-control" id="age-category" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="cost">Цена</label>
+                        <input type="text" class="form-control short-numeric" id="cost" placeholder="">
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="is-free">
+                        <label class="form-check-label" for="is-free">Бесплатно</label>
+                      </div>    
+                    </div>
+                  </div>        
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-center">
-                  <button id="btn-save" type="submit" class="btn btn-primary">Сохранить</button>
+                  <button id="btn-save" type="button" class="btn btn-primary">Сохранить</button>
                 </div>
             </div>
           </div>
@@ -195,6 +244,47 @@
 </div>
 <!-- ./wrapper -->
 
+<!--Modals-->
+<!--Error-->
+<div class="modal fade" id="error-modal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header">
+        <h4 class="modal-title">Ошибка обработки запроса</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="error-body">
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Success-->
+<div class="modal fade" id="success-modal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header">
+        <h4 class="modal-title">Запрос обработан</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="success-body">
+        <p>Запись успешно сохранена</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light" data-dismiss="modal" onclick="window.location.href='plays.html'">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -206,6 +296,6 @@
 <!--Custom-->
 <script src="../../dist/js/settings.js"></script>
 <script src="../../dist/js/webHelpers.js"></script>
-<script src="../../dist/js/actions/action_form.js"></script>
+<script src="../../dist/js/plays/play_form.js"></script>
 </body>
 </html>

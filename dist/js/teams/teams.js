@@ -15,10 +15,10 @@ $(document).ready(function () {
 function newItem()
 {
     var data = {
-        "Name" : $('#add-name').val()
+        "name" : $('#add-name').val()
     }
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/teams/team",
+        url: BASE_URL + "plays-service/teams/team",
         method: "POST",        
         dataType: 'json',
         headers:{
@@ -28,7 +28,8 @@ function newItem()
         success: function (response) {
             if (response.success === true)
             {
-                alert('Добавлено')
+                alert('Добавлено');
+                loadTable();
             }
         }
     })
@@ -37,12 +38,12 @@ function newItem()
 function saveItem()
 {
     var data = {
-        "Id" : parseInt($('#edit-Id').val()),
-        "Name" : $('#edit-Name').val()
+        "id" : parseInt($('#edit-id').val()),
+        "name" : $('#edit-name').val()
     }
 
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/teams/team",
+        url: BASE_URL + "plays-service/teams/team",
         method: "PUT",
         dataType: 'json',
         headers:{
@@ -52,7 +53,7 @@ function saveItem()
         success: function (response) {
             if (response.success === true)
             {
-                alert('Команда сохранена');
+                alert('Сохранено');
                 loadTable();
             }
         }
@@ -62,14 +63,14 @@ function saveItem()
 
 function showEditDialog(id,name)
 {
-    $('#edit-Id').val(id);
-    $('#edit-Name').val(name);
+    $('#edit-id').val(id);
+    $('#edit-name').val(name);
 }
 
 function deleteItem(id)
 {
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/teams/team/"+id,
+        url: BASE_URL + "plays-service/teams/team/"+id,
         method: "DELETE",        
         dataType: 'json',
         headers:{
@@ -78,7 +79,7 @@ function deleteItem(id)
         success: function (response) {
             if (response.success === true)
             {
-                alert('Команда удалена');
+                alert('Удалено');
                 loadTable();
             }
         }
@@ -89,7 +90,7 @@ function deleteItem(id)
 function loadTable()
 {
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/teams",
+        url: BASE_URL + "plays-service/teams",
         method: "GET",
         dataType: 'json',
         headers:{
@@ -103,20 +104,20 @@ function loadTable()
                 $.each(response.data, function (i, item) {
                     var $tr = $('<tr>').append(
                         /*ID*/
-                        $("<td>").text(item.Id),
+                        $("<td>").text(item.id),
                         /*Name*/
-                        $('<td>').text(item.Name),
+                        $('<td>').text(item.name),
                         $('<td class="project-actions">').append(
-                            $('<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-default">')
-                                .text('Изменить')
-                                .append($('<i class="fas fa-pencil-alt margin-left-5">'))
-                                .on('click', function(){showEditDialog(item.Id, item.Name)}),
+                            $('<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-edit">')
+                                .append($('<i class="fas fa-pencil-alt margin-right-5">'))
+                                .append("Изменить")
+                                .on('click', function(){showEditDialog(item.id, item.name)}),
                         ),
                         $('<td class="project-actions">').append(
-                            $('<button class="btn btn-danger btn-sm">')
-                                .text('Удалить')
-                                .append($('<i class="fas fa-trash margin-left-5">'))
-                                .on('click', function(){deleteItem(item.Id)})),
+                            $('<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">')
+                                .append($('<i class="fas fa-trash margin-right-5">'))
+                                .append('Удалить')
+                                .on('click', function(){deleteItem(item.id)})),
                     );
 
                     $tr.appendTo('#table-all tbody');

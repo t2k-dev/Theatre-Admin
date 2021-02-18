@@ -8,12 +8,12 @@ $(document).ready(function () {
 function newItem()
 {
     var data = {
-        "NameRU": $('#name-ru').val(),
-        "NameKG": $('#name-kg').val(),
-        "NameEN": $('#name-en').val()
+        "name_ru": $('#name-ru').val(),
+        "name_kg": $('#name-kg').val(),
+        "name_en": $('#name-en').val()
     }
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/roles/role",
+        url: BASE_URL + "plays-service/roles/role",
         method: "POST",        
         dataType: 'json',
         headers:{
@@ -23,7 +23,7 @@ function newItem()
         success: function (response) {
             if (response.success === true)
             {
-                alert('Роль добавлена');
+                alert('Добавлено');
                 loadTable();
             }
         }
@@ -32,19 +32,13 @@ function newItem()
 
 function deleteItem(id)
 {
-    var data = {
-        "NameRU": $('#name-ru').val(),
-        "NameKG": $('#name-kg').val(),
-        "NameEN": $('#name-en').val()
-    }
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/roles/role/"+id,
+        url: BASE_URL + "plays-service/roles/role/"+id,
         method: "DELETE",        
         dataType: 'json',
         headers:{
             "Authorization" : "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDI2MTY0MzcsImlzcyI6IjIifQ.YMhf7KM3eSaEwPLjRtsC5z7VFsTo3oZe47MJgg_qxZg",
         },
-        data: JSON.stringify(data),
         success: function (response) {
             if (response.success === true)
             {
@@ -63,7 +57,7 @@ function editItem(id)
 function loadTable()
 {
     $.ajax({
-        url: "http://api.mestodteatr.kg/plays-service/roles",
+        url: BASE_URL + "plays-service/roles",
         method: "GET",
         dataType: 'json',
         success: function (response) {            
@@ -74,21 +68,21 @@ function loadTable()
                 $.each(response.data, function (i, item) {
                     var $tr = $('<tr>').append(
                         /*ID*/
-                        $("<td>").text(item.Id),
+                        $("<td>").text(item.id),
                         /*Name*/
-                        $('<td>').text(item.NameRU),
-                        $('<td>').text(item.NameKG),
-                        $('<td>').text(item.NameEN),
+                        $('<td>').text(item.name_ru),
+                        $('<td>').text(item.name_kg),
+                        $('<td>').text(item.name_en),
                         $('<td>').append(
-                            $('<a class="btn btn-info btn-sm" href="./member_role_form.html?id='+item.Id+'">')
-                                .text('Изменить')
-                                .append($('<i class="fas fa-pencil-alt margin-left-5">'))
+                            $('<a class="btn btn-info btn-sm" href="./member_role_form.html?id='+item.id+'">')
+                                .append($('<i class="fas fa-pencil-alt margin-right-5">'))
+                                .append('Изменить')
                         ),
                         $('<td>').append(
                             $('<a class="btn btn-danger btn-sm" href="#">')
-                                .text('Удалить ')
-                                .append($('<i class="fas fa-trash margin-left-5">'))
-                                .on('click', function(){deleteItem(item.Id)})),
+                                .append($('<i class="fas fa-trash margin-right-5">'))
+                                .append('Удалить')
+                                .on('click', function(){deleteItem(item.id)}))
                     );
 
                     $tr.appendTo('#table-all tbody');

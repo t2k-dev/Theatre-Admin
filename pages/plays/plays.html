@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Widgets</title>
+  <title>TheatreAdmin | Widgets</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="../../dist/css/custom.css">  
+  <link rel="stylesheet" href="../../dist/css/custom.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -45,11 +45,8 @@
           <div class="col-sm-6">
             <h1>Спектакли</h1>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Widgets</li>
-            </ol>
+          <div class="col-sm-6 text-right">
+            <button class="btn btn-block btn-success btn-sm btn-add-new" onclick="window.location.href = 'play_form.html'"><i class="fas fa-plus"></i> Добавить</button>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -59,7 +56,7 @@
     <section class="content">
       <div class="container-fluid">
         <!--Member Infos-->
-        <button class="btn btn-block btn-primary btn-sm" style="width: 100px; margin:10px 0" onclick="window.location.href = 'play_form.html'">Добавить</button>
+        
         
           <div class="card">
             <div class="card-header">
@@ -77,14 +74,8 @@
               <table class="table table-bordered table-hover" id="table-all">
                   <thead>
                     <tr>
-                      <th style="width: 1%;">
-                        #
-                      </th>                      
                       <th>
                           Название
-                      </th>
-                      <th>
-                        Описание
                       </th>
                       <th>
                         Создано
@@ -97,7 +88,7 @@
                       <th style="width:10%">
                       </th>
                   </tr>
-                  </thead>              
+                  </thead>
               </table>
             </div>
     
@@ -137,6 +128,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <script src="../../dist/js/settings.js"></script>
-<script src="../../dist/js/plays/index.js"></script>
+<script src="../../dist/js/plays/plays.js"></script>
 </body>
 </html>
